@@ -1,5 +1,5 @@
 const citiesFilePath = 'uscities.csv';
-const zipsFilePath = 'uszips.csv';
+const zipsFilePath = 'uszips.json';
 const csv = require('csvtojson');
 const fs = require('fs');
 const bodyParser = require('body-parser');
@@ -30,11 +30,11 @@ csv()
 
 
 // Import Zip Code Data Set
-csv()
-.fromFile(citiesFilePath)
-.then((jsonObj)=>{
+fs.readFile(zipsFilePath, 'utf8', (err, data) => {
 
-	zipCodeData = jsonObj;
+	if (err) { console.log(err) }
+
+	zipCodeData = data;
 
 });
 
